@@ -1,90 +1,15 @@
 import { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
 import { Button, Container } from "react-bootstrap";
-// import { Link, useSearchParams } from "react-router-dom";
 import { useRouter } from "next/router";
-import useGoogleSheets from "use-google-sheets";
-import { GoogleSpreadsheet } from "google-spreadsheet";
 import LoadingOverlay from "../components/LoadingOverlay";
-// const { google } = require("googleapis");
+import getSheet from "../libs/sheets";
 
-const Ticket = () => {
-    //TODO: Data connection
+const Ticket = ({ sheet }) => {
     const router = useRouter();
-    const params = router.query;
-
+    const queryEmail = router.query.email;
+    
     const [loading, setLoading] = useState(true);
-    const [records, setRecords] = useState();
-    
-    //? google-spreadsheet
-    const creds = {
-        "type": process.env.REACT_APP_GOOGLE_ACCOUNT_TYPE,
-        "project_id": process.env.REACT_APP_GOOGLE_PROJECT_ID,
-        "private_key_id": process.env.REACT_APP_GOOGLE_PRIVATE_KEY_ID,
-        "private_key": process.env.REACT_APP_GOOGLE_PRIVATE_KEY,
-        "client_email": process.env.REACT_APP_GOOGLE_CLIENT_EMAIL,
-        "client_id": process.env.REACT_APP_GOOGLE_CLIENT_ID,
-        "auth_uri": process.env.REACT_APP_GOOGLE_AUTH_URI,
-        "token_uri": process.env.REACT_APP_GOOGLE_TOKEN_URI,
-        "auth_provider_x509_cert_url": process.env.REACT_APP_GOOGLE_AUTH_PROVIDER_URL,
-        "client_x509_cert_url": process.env.REACT_APP_GOOGLE_CLIENT_CERT_URL
-      }
-    const doc = new GoogleSpreadsheet("");
-    const getData = async () => {
-        console.log(creds);
-        await doc.useServiceAccountAuth(creds)
-        console.log("passed auth")
-        await doc.loadInfo()
-        const sheet = doc.sheetsByIndex[0]
-        const records = sheet.getRows()
-        console.log(records)
-        setLoading(false)
-    }
-    useEffect(() => {
-        getData()
-    }, [])
-    
-    //? googleapis
-    // const JwtClient = new google.auth.JWT(
-    //     process.env.GOOGLE_CLIENT_EMAIL,
-    //     null,
-    //     process.env.GOOGLE_PRIVATE_KEY,
-    //     ["https://www.googleapis.com/auth/spreadsheets"]
-    // );
-    // const initGoogleAPI = async () => {
-    //     await JwtClient.authorize();
-    //     const client = google.sheets({ version: "v4", "auth": JwtClient });
-    //     const data = await client.spreadsheets.get({ spreadsheetId: process.env.GOOGLE_SHEET });
-    //     console.log(data.data)
-    //     setLoading(false);
-    // }
-    // useEffect(() => {
-    //     initGoogleAPI()
-    // }, [])
-
-
-    //? useGoogleSheets
-    // const { data, loading, error } = useGoogleSheets({
-    //     apiKey: "AIzaSyAm7Un-DnLEowmL3E5EFO71Q20SXzGHI_k",
-    //     sheetId: "1aaRSOCDI8QDyI4Ht3h7eLguzUV86COPo3iKnhdjrJb0"
-    // })
-
-    // const getData = async () => {
-    //     // setLoading(false)
-    // }
-    // useEffect(() => {
-    //     if (!loading) {
-    //         console.log(data)
-    //         // const ticketRecord = data.find(element => element['email'] === searchParams.get('email'))
-    //         // if (ticketRecord) {
-    //         //     console.log()
-    //         // } else {
-
-    //         // }
-    //     }
-    // }, [loading])
-    
-    
     const [ticketObj, setTicketObj] = useState({
         id: "a1234",
         name: "TSY",
@@ -92,6 +17,25 @@ const Ticket = () => {
         venue: "Fulam Space Station",
         seat: "",
     });
+
+    useEffect(() => {
+        // console.log(sheet);
+        const res = sheet.find(value => value["Email"] === queryEmail);
+        if (res) {
+            setTicketObj({
+                id: res["ID"],
+                name: res["Text text"],
+                time: res["Are you stupid?"] === " Yes" ? "19:30" : "15:00",
+                venue: "Fulam Space Station",
+                seat: "",
+            })
+            setLoading(false);
+        } else {
+            alert("Email not found, please enter a valid email.");
+            router.back();
+        }
+    }, [])    
+    
     
     const seatSelected = ticketObj && ticketObj.seat.length > 0;
     
@@ -128,6 +72,15 @@ const Ticket = () => {
             </Container>
         </div>
     )
+}
+
+export async function getStaticProps() {
+    const sheet = await getSheet();
+    return {
+        props: {
+            sheet: sheet
+        }
+    }
 }
 
 export default Ticket;
