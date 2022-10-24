@@ -20,21 +20,25 @@ const Ticket = ({ sheet }) => {
 
     useEffect(() => {
         // console.log(sheet);
-        const res = sheet.find(value => value["電郵地址"] === queryEmail);
-        if (res) {
-            setTicketObj({
-                id: res["ID"],
-                name: res["Name 姓名"],
-                time: res["Session 時段 "],
-                venue: "McAulay Studio, Hong Kong Arts Centre, 2 Harbour Road, Wan Chai, Hong Kong",
-                seat: res["Seating"],
-            })
-            setLoading(false);
-        } else {
-            alert("Email not found, please enter a valid email.");
-            router.back();
+        if (router.isReady) {
+            console.log(queryEmail);
+            const res = sheet.find(value => value["電郵地址"] === queryEmail);
+            if (res) {
+                setTicketObj({
+                    id: res["ID"],
+                    name: res["Name 姓名"],
+                    time: res["Session 時段 "],
+                    venue: "McAulay Studio, Hong Kong Arts Centre, 2 Harbour Road, Wan Chai, Hong Kong",
+                    seat: res["Seating"] ? res["Seating"] : "",
+                    numTickets: res["No. of tickets 門票數量"]
+                })
+                setLoading(false);
+            } else {
+                alert("Email not found, please enter a valid email.");
+                router.back();
+            }
         }
-    }, [])    
+    }, [router.isReady])    
     
     
     const seatSelected = ticketObj && ticketObj.seat.length > 0;
@@ -60,6 +64,7 @@ const Ticket = ({ sheet }) => {
                     <div><b>Name: </b>{ticketObj.name}</div>
                     <div><b>Time: </b>{ticketObj.time}</div>
                     <div><b>Venue: </b>{ticketObj.venue}</div>
+                    <div><b>No. of tickets: </b>{ticketObj.numTickets}</div>
                     <div><b>Seat: </b>{seatSelected ? ticketObj.seat : "Not yet arranged"}</div>
                 </div>
                     {

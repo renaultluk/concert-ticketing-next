@@ -24,20 +24,6 @@ const Admin = ({ sheet }) => {
     useEffect(() => {
         if (scannedTicket) {
             const timerId = setInterval(() => {
-                // if (timerRunning) {
-                    // console.log("tick", timerRef.current, time, timerRunning)
-                    // timerRef.current -= 1;
-                    // console.log(timerRef.current < 0, scannedTicket)
-                    // if (timerRef.current < 0 && scannedTicket) {
-                    //     console.log("finished")
-                    //     resetTimer();
-                    // } else {
-                    //     console.log("not finished")
-                    //     setTime(timerRef.current);
-                    // }
-                // } else {
-                //     console.log("timer not running")
-                // }
                 window.location.reload();
             }, 5000);
             console.log("timer set up")
