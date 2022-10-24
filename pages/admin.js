@@ -72,11 +72,11 @@ const Admin = ({ sheet }) => {
                 })
                 // console.log("after fetching")
                 setScannedTicket({
-                    event: "North District Whatever the fuck",
+                    event: "Querencia: Tong Shee Yiu Recorder Recital",
                     id: ticketID,
-                    time: record["Are you stupid?"] === "Yes" ? "19:30" : "15:00",
-                    seat: "B4",
-                    name: record["Text text"],
+                    time: record["Session 時段 "],
+                    seat: "",
+                    name: record["Name 姓名"],
                 })
                 setTimerRunning(true);
             }

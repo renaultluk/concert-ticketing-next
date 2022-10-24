@@ -58,14 +58,15 @@ export default function Home() {
                 </Col>
                 <Container className="p-3">
                         <h1>
-                            North District Whatever the Fuck
+                            Querencia: Tong Shee Yiu Recorder Recital 
                         </h1>
-                        <div><b>Time: </b>20/4/2022 19:30</div>
-                        <div><b>Venue: </b>Fulam Space Station</div>
-                        <div><b>Description:</b></div>
-                        <div>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in nulla mauris. Vivamus congue mattis libero quis dignissim. Aenean erat nisi, cursus nec dapibus a, dignissim sed felis. Etiam mollis, arcu ut vehicula tristique, risus lectus dapibus enim, in consequat est mauris laoreet diam. Donec elit sem, varius quis ultricies vitae, semper eu risus. Proin at lobortis elit, vel sagittis sapien. Nam sagittis quam sed hendrerit gravida.
-                        </div>
+                        <div><b>Date: </b>27 December 2022</div>
+                        <div><b>Time: </b>3:00 pm / 7:30 pm</div>
+                        <div><b>Venue: </b>McAulay Studio, Hong Kong Arts Centre, 2 Harbour Road, Wan Chai, Hong Kong</div>
+                        <div><b>Ticket Price: </b>$ 200</div>
+                        <div>*For ages 6 and above</div>
+
+                        <div>Should you have any enquiries, please WhatsApp us at (+852) 90921157.</div>
 
                         <div style={{ height: 40 }} />
 

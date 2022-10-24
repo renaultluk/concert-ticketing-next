@@ -20,14 +20,14 @@ const Ticket = ({ sheet }) => {
 
     useEffect(() => {
         // console.log(sheet);
-        const res = sheet.find(value => value["Email"] === queryEmail);
+        const res = sheet.find(value => value["電郵地址"] === queryEmail);
         if (res) {
             setTicketObj({
                 id: res["ID"],
-                name: res["Text text"],
-                time: res["Are you stupid?"] === " Yes" ? "19:30" : "15:00",
-                venue: "Fulam Space Station",
-                seat: "",
+                name: res["Name 姓名"],
+                time: res["Session 時段 "],
+                venue: "McAulay Studio, Hong Kong Arts Centre, 2 Harbour Road, Wan Chai, Hong Kong",
+                seat: res["Seating"],
             })
             setLoading(false);
         } else {
@@ -48,11 +48,11 @@ const Ticket = ({ sheet }) => {
                 {/* Event Info */}
                 <div className="d-flex flex-row align-items-center p-3" style={{ gap: "0.5em" }}>
                     <img width={60} style={{ aspectRatio: 1 }} />
-                    <h3><b>North District Whatever the Fuck</b></h3>
+                    <h3><b>Querencia: Tong Shee Yiu Recorder Recital</b></h3>
                 </div>
                 
                 <div className="d-flex justify-content-center p-2">
-                    <QRCode value={ticketObj.id} />
+                    <QRCode value={(ticketObj.id && ticketObj.id.length > 0) ? ticketObj.id : "abcde"} />
                 </div>
 
                 <div className="p-3">

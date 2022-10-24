@@ -33,7 +33,7 @@ export default async function getSheet() {
         const doc = google.sheets({ version: 'v4', auth: jwtClient });
         const sheet = await doc.spreadsheets.values.get({
             spreadsheetId: process.env.NEXT_PUBLIC_GOOGLE_SHEET,
-            range: "Form Responses 1"
+            range: "表格回應 1"
         })
         return reformatSheet(sheet.data.values);
     } catch (error) {
@@ -54,7 +54,7 @@ export async function writeToSheet(rowIndex, colIndex, value) {
         const doc = google.sheets({ version: 'v4', auth: jwtClient });
         const sheet = await doc.spreadsheets.values.get({
             spreadsheetId: process.env.NEXT_PUBLIC_GOOGLE_SHEET,
-            range: "Form Responses 1"
+            range: "表格回應 1"
         })
         console.log("got sheet")
         const targetCell = sheet.getCell(rowIndex, colIndex);
