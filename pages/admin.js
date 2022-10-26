@@ -14,6 +14,14 @@ const Admin = ({ sheet }) => {
     const timerRef = useRef(time);
     const [timerRunning, setTimerRunning] = useState(false);
 
+    const [successAudio, setSuccessAudio] = useState()
+    const [failureAudio, setFailureAudio] = useState()
+
+    useEffect(() => {
+        setSuccessAudio(new Audio("/the-lick-success.mp3"))
+        setFailureAudio(new Audio("/the-lick-fail.mp3"))
+    }, [])
+
     const resetTimer = () => {
         timerRef.current = COUNT_TIME;
         setTime(COUNT_TIME);
@@ -37,6 +45,7 @@ const Admin = ({ sheet }) => {
         const record = sheet.find(value => value.ID === ticketID);
         if (record) {
             if (record["Checked in"] === "TRUE") {
+                failureAudio.play()
                 alert("Ticket already checked in.");
             } else {
                 console.log("checking in")
@@ -57,6 +66,7 @@ const Admin = ({ sheet }) => {
                     })
                 })
                 // console.log("after fetching")
+                successAudio.play()
                 setScannedTicket({
                     event: "Querencia: Tong Shee Yiu Recorder Recital",
                     id: ticketID,
@@ -67,6 +77,7 @@ const Admin = ({ sheet }) => {
                 setTimerRunning(true);
             }
         } else {
+            failureAudio.play()
             alert("Ticket ID not found.");
         }
     }

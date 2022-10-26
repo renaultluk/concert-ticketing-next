@@ -51,7 +51,11 @@ const Ticket = ({ sheet }) => {
             <Container className="w-100 d-flex flex-column justify-content-center">
                 {/* Event Info */}
                 <div className="d-flex flex-row align-items-center p-3" style={{ gap: "0.5em" }}>
-                    <img width={60} style={{ aspectRatio: 1 }} />
+                    <img 
+                        src="/Final_Poster.png"
+                        width={60} 
+                        style={{ aspectRatio: 1, objectFit: "cover" }} 
+                    />
                     <h3><b>Querencia: Tong Shee Yiu Recorder Recital</b></h3>
                 </div>
                 

@@ -52,7 +52,7 @@ export default function Home() {
             >
                 <Col xs={12} sm={3} style={{ padding: 0 }}>
                     <img 
-                            src="/event_poster_placeholder.jpg"
+                            src="/Final_Poster.png"
                             className="d-flex w-100"
                     />
                 </Col>
