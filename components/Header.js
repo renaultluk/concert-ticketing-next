@@ -8,7 +8,7 @@ const Header = () => {
             // top: 0,
           }}
         >
-          <h3 style={{ color: "#FFFFFF" }}>Placeholder</h3>
+          <h3 style={{ color: "#FFFFFF" }}>ArtsyEventHK</h3>
         </div>
     )
 }
