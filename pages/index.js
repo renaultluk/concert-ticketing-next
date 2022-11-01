@@ -3,9 +3,13 @@ import Image from 'next/image'
 import { useRouter } from 'next/router';
 import { Button, Container, Col } from 'react-bootstrap';
 import styles from '../styles/Home.module.css'
+import LoadingOverlay from '../components/LoadingOverlay';
+import { useState } from 'react';
 
 export default function Home() {
   const router = useRouter();
+
+  const [loading, setLoading] = useState(false);
 
     const validateEmail = (email) => {
         return String(email)
@@ -26,6 +30,7 @@ export default function Home() {
             }
             if (validateEmail(queryEmail)) {
                 done = true;
+                setLoading(true);
                 router.push({
                     pathname: "/ticket",
                     query: { email: queryEmail },
@@ -41,7 +46,7 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>Placeholder Title</title>
+                <title>Querencia: Tong Shee Yiu Recorder Recital | ArtsyEventHK</title>
             </Head>
             <div 
                 className="d-flex flex-column flex-sm-row align-items-center p-0 p-sm-5"
@@ -50,6 +55,7 @@ export default function Home() {
                     flex: 1,
                 }}
             >
+                {loading && <LoadingOverlay />}
                 <Col xs={12} sm={3} style={{ padding: 0 }}>
                     <img 
                             src="/Final_Poster.png"

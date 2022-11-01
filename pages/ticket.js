@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
 import { Button, Container } from "react-bootstrap";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import LoadingOverlay from "../components/LoadingOverlay";
 import getSheet from "../libs/sheets";
 
@@ -47,6 +48,9 @@ const Ticket = ({ sheet }) => {
     
     return (
         <div className="w-100">
+            <Head>
+                <title>Check My Ticket | ArtsyEventHK</title>
+            </Head>
             {loading && <LoadingOverlay />}
             <Container className="w-100 d-flex flex-column justify-content-center">
                 {/* Event Info */}
