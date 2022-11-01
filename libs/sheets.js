@@ -47,7 +47,7 @@ export async function writeToSheet(rowIndex, colIndex, value) {
         const jwtClient = new google.auth.JWT(
             process.env.NEXT_PUBLIC_GOOGLE_CLIENT_EMAIL,
             null,
-            _.replace(process.env.NEXT_PUBLIC_GOOGLE_PRIVATE_KEY, /\\n/g, '\n'),
+            process.env.NEXT_PUBLIC_GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
             target
         );
 
