@@ -87,7 +87,7 @@ const Ticket = ({ sheet }) => {
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const sheet = await getSheet();
     return {
         props: {
