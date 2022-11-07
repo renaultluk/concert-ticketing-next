@@ -85,7 +85,7 @@ export default function Home() {
                         >
                                 <Button 
                                     className="d-flex flex-fill justify-content-center"
-                                    href="https://getbootstrap.com/docs/4.0/utilities/text/"
+                                    href="https://docs.google.com/forms/d/1qZIAwpvraB31DB1saaV1AI56IygcEhDlh_0-fAJzYig/viewform?edit_requested=true"
                                     target="_blank"
                                 >
                                     Get a Ticket
