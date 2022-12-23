@@ -91,7 +91,7 @@ export async function writeToSheetGS(rowIndex, colIndex, value) {
         // })
 
         console.log("got sheet")
-        await sheet.loadCells('A1:L500')
+        await sheet.loadCells('A1:P500')
         const targetCell = sheet.getCell(rowIndex, colIndex);
         console.log(`rowIndex: ${rowIndex}, in sheet: ${targetCell.rowIndex}`)
         targetCell.value = value;

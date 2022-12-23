@@ -71,7 +71,7 @@ const Admin = ({ sheet }) => {
                     event: "Querencia: Tong Shee Yiu Recorder Recital",
                     id: ticketID,
                     time: record["Session 時段 "],
-                    seat: "",
+                    seat: record["Seating (with Decription)"] ? record["Seating (with Decription)"] : "Not arranged",
                     name: record["Name 姓名"],
                 })
                 setTimerRunning(true);

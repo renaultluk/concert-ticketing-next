@@ -30,7 +30,7 @@ const Ticket = ({ sheet }) => {
                     name: res["Name 姓名"],
                     time: res["Session 時段 "],
                     venue: "McAulay Studio, Hong Kong Arts Centre, 2 Harbour Road, Wan Chai, Hong Kong",
-                    seat: res["Seating"] ? res["Seating"] : "",
+                    seat: res["Seating (with Decription)"] ? res["Seating (with Decription)"] : "",
                     numTickets: res["No. of tickets 門票數量"]
                 })
                 setLoading(false);
