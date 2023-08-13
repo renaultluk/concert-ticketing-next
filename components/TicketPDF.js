@@ -53,8 +53,8 @@ const TicketPDF = (props) => {
                         <Text style={[styles.reminderText, styles.chineseText]}>請提早至少 10 至 15 分鐘到達國際禮拜堂 22 樓，並預留時間入場。音樂會不設劃位，觀眾可自由選擇座位。</Text>
                         <Text style={[styles.reminderText, styles.reminderTextBottom]}>Please arrive at the Methodist International Church, 22nd floor, 10-15 minutes early for the concert and allow time for entry. Seating is unassigned, so you can freely choose your preferred seat.</Text>
 
-                        <Text style={[styles.reminderText, styles.chineseText]}>請提早打開電子門票，並按指示掃描二維碼入場。</Text>
-                        <Text style={[styles.reminderText, styles.reminderTextBottom]}>Open your electronic ticket in advance and scan the provided QR code for entry.</Text>
+                        <Text style={[styles.reminderText, styles.chineseText]}>請提早預備電子門票，並按指示掃描二維碼入場。</Text>
+                        <Text style={[styles.reminderText, styles.reminderTextBottom]}>Please prepare your electronic ticket in advance and scan the provided QR code for entry.</Text>
 
                         <Text style={[styles.reminderText, styles.chineseText]}>節目進行期間，歡迎觀眾進行拍攝和錄影，並將精彩時刻分享到社交媒體，唯需關閉裝置的閃光燈及調校到靜</Text>
                         <Text style={[styles.reminderText, styles.chineseText]}>音模式。</Text>
