@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^3.1.12",
     "bootstrap": "^5.2.2",
     "google-spreadsheet": "^3.3.0",
     "googleapis": "^108.0.0",

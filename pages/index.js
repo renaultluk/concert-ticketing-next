@@ -58,19 +58,19 @@ export default function Home() {
                 {loading && <LoadingOverlay />}
                 <Col xs={12} sm={3} style={{ padding: 0 }}>
                     <img 
-                            src="/Final_Poster.png"
+                            src="/Italian_Baroque.png"
                             className="d-flex w-100"
                     />
                 </Col>
                 <Container className="p-3">
                         <h1>
-                            Querencia: Tong Shee Yiu Recorder Recital 
+                            Italian Baroque Euphoria: Recorder Recital by Tong Shee Yiu
                         </h1>
-                        <div><b>Date: </b>27 December 2022</div>
-                        <div><b>Time: </b>3:00 pm / 7:30 pm</div>
-                        <div><b>Venue: </b>McAulay Studio, Hong Kong Arts Centre, 2 Harbour Road, Wan Chai, Hong Kong</div>
-                        <div><b>Ticket Price: </b>$ 200</div>
-                        <div>*For ages 6 and above</div>
+                        <div><b>Date: </b>23/8/2023</div>
+                        <div><b>Time: </b>4:30 pm / 7:30 pm</div>
+                        <div><b>Venue: </b>22/F, Methodist International Church, 271 Queen's Road East, Wan Chai</div>
+                        <div><b>Ticket Price: </b>$ 250</div>
+                        <div>Free Seating</div>
 
                         <div>Should you have any enquiries, please WhatsApp us at (+852) 90921157.</div>
 
