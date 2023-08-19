@@ -43,7 +43,7 @@ const TicketPDF = (props) => {
                                 <Text>{props.ticketObj.name}</Text>
                                 <Text>23/8/2023 {props.ticketObj.time}</Text>
                                 <Text style={styles.chineseText}>灣仔皇后大道東 271號 國際禮拜堂 22 樓</Text>
-                                <Text>22/F, Methodist International Church, 271 Queen's Road East, Wan Chai</Text>
+                                <Text>22/F, Methodist International Church, 271 Queen&apos;s Road East, Wan Chai</Text>
                                 <Text>{props.ticketObj.numTickets}</Text>
                             </View>
                         </View>
@@ -64,7 +64,7 @@ const TicketPDF = (props) => {
                         <Text style={[styles.reminderText, styles.reminderTextBottom]}>The concert is approximately 1 hour and 30 minutes long, including a 15-minute intermission.</Text>
 
                         <Text style={[styles.reminderText, styles.chineseText]}>男女及殘疾人士洗手間位於同層升降機旁。</Text>
-                        <Text style={styles.reminderText}>Restrooms for men, women, and people with disabilities are located near the same floor's elevators.</Text>
+                        <Text style={styles.reminderText}>Restrooms for men, women, and people with disabilities are located near the same floor&apos;s elevators.</Text>
                     </View>
                 </View>
             </Page>
