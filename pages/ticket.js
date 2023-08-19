@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
-import { Button, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import LoadingOverlay from "../components/LoadingOverlay";
 import getSheet from "../libs/sheets";
-import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import TicketPDF from "../components/TicketPDF";
 
 const Ticket = ({ sheet }) => {

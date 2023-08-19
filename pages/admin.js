@@ -3,7 +3,6 @@ import { Button } from "react-bootstrap";
 // import { QrReader } from "react-qr-reader";
 import { useZxing } from "react-zxing";
 import getSheet from "../libs/sheets";
-import Countdown from "react-countdown";
 
 const COUNT_TIME = 5;
 
