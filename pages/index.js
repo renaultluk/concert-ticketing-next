@@ -68,7 +68,7 @@ export default function Home() {
                         </h1>
                         <div><b>Date: </b>23/8/2023</div>
                         <div><b>Time: </b>4:30 pm / 7:30 pm</div>
-                        <div><b>Venue: </b>22/F, Methodist International Church, 271 Queen's Road East, Wan Chai</div>
+                        <div><b>Venue: </b>22/F, Methodist International Church, 271 Queen&apos;s Road East, Wan Chai</div>
                         <div><b>Ticket Price: </b>$ 250</div>
                         <div>Free Seating</div>
 
