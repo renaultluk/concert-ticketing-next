@@ -86,14 +86,14 @@ const Ticket = ({ sheet }) => {
                         )
                     } */}
                 {isClient && (
-                    <>
+                    <div id="ticket-pdf">
                         <PDFDownloadLink document={<TicketPDF ticketObj={ticketObj} />} fileName="ticket.pdf">
                                 {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download Ticket PDF')}
                         </PDFDownloadLink>
-                        <PDFViewer>
+                        {/* <PDFViewer>
                             <TicketPDF ticketObj={ticketObj} />
-                        </PDFViewer>
-                    </>
+                        </PDFViewer> */}
+                    </div>
                 )}
             </Container>
         </div>
