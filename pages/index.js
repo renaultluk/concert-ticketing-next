@@ -46,7 +46,7 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>Querencia: Tong Shee Yiu Recorder Recital | ArtsyEventHK</title>
+                <title>Italian Baroque Euphoria: Recorder Recital by Tong Shee Yiu | ArtsyEventHK</title>
             </Head>
             <div 
                 className="d-flex flex-column flex-sm-row align-items-center p-0 p-sm-5"
