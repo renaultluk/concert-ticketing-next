@@ -5,8 +5,8 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import LoadingOverlay from "../components/LoadingOverlay";
 import getSheet from "../libs/sheets";
-import { PDFDownloadLink } from "@react-pdf/renderer";
-import TicketPDF from "../components/TicketPDF";
+// import { PDFDownloadLink } from "@react-pdf/renderer";
+// import TicketPDF from "../components/TicketPDF";
 
 const Ticket = ({ sheet }) => {
     const router = useRouter();
@@ -87,9 +87,9 @@ const Ticket = ({ sheet }) => {
                     } */}
                 {isClient && (
                     <div id="ticket-pdf">
-                        <PDFDownloadLink document={<TicketPDF ticketObj={ticketObj} />} fileName="ticket.pdf">
+                        {/* <PDFDownloadLink document={<TicketPDF ticketObj={ticketObj} />} fileName="ticket.pdf">
                                 {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download Ticket PDF')}
-                        </PDFDownloadLink>
+                        </PDFDownloadLink> */}
                         {/* <PDFViewer>
                             <TicketPDF ticketObj={ticketObj} />
                         </PDFViewer> */}
