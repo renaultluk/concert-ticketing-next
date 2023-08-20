@@ -31,7 +31,7 @@ const Ticket = ({ sheet }) => {
                 setTicketObj({
                     id: res["ID"],
                     name: res["姓名 Name"],
-                    time: res["時段 Session"],
+                    time: res["時段 Session "],
                     venue: "灣仔皇后大道東 271號 國際禮拜堂 22 樓\n22/F, Methodist International Church, 271 Queen's Road East, Wan Chai",
                     numTickets: parseInt(res["全日制學生門票數量 Number of Full-time Student Ticket ($150)"]) + parseInt(res["標準門票數量 Number of Standard Ticket ($250)"])
                 })
