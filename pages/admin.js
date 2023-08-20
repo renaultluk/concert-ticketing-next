@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 // import { QrReader } from "react-qr-reader";
 import { useZxing } from "react-zxing";
 import getSheet from "../libs/sheets";
@@ -16,6 +16,8 @@ const Admin = ({ sheet }) => {
     const [successAudio, setSuccessAudio] = useState()
     const [failureAudio, setFailureAudio] = useState()
 
+    const loadingOverlay = useRef(null);
+
     useEffect(() => {
         setSuccessAudio(new Audio("/the-lick-success.mp3"))
         setFailureAudio(new Audio("/the-lick-fail.mp3"))
@@ -29,10 +31,11 @@ const Admin = ({ sheet }) => {
     }
 
     useEffect(() => {
+        loadingOverlay.current.style.display = "none";
         if (scannedTicket) {
             const timerId = setInterval(() => {
                 window.location.reload();
-            }, 5000);
+            }, 2000);
             console.log("timer set up")
             return () => {
                 clearInterval(timerId);
@@ -50,11 +53,8 @@ const Admin = ({ sheet }) => {
                 console.log("checking in")
                 const recordIndex = sheet.findIndex(value => value.ID === ticketID) + 1;
                 const checkInIndex = Object.keys(record).findIndex(value => value === "Checked in");
-                // const checkInCell = sheet.getCell(recordIndex, checkInIndex);
-                // checkInCell.value = "TRUE";
-                // await sheet.saveUpdatedCells();
-                // await writeToSheet(recordIndex, checkInIndex, "TRUE");
-                // console.log("before fetching")
+
+                loadingOverlay.current.style.display = "flex";
                 await fetch('/api/hello', {
                     method: "POST",
                     headers: {'Content-Type': 'application/json'},
@@ -64,14 +64,12 @@ const Admin = ({ sheet }) => {
                         value: "TRUE",
                     })
                 })
-                // console.log("after fetching")
                 successAudio.play()
                 setScannedTicket({
-                    event: "Querencia: Tong Shee Yiu Recorder Recital",
+                    event: "Italian Baroque Euphoria",
                     id: ticketID,
-                    time: record["Session 時段 "],
-                    seat: record["Seating (with Decription)"] ? record["Seating (with Decription)"] : "Not arranged",
-                    name: record["Name 姓名"],
+                    time: record["時段 Session "],
+                    name: record["姓名 Name"],
                 })
                 setTimerRunning(true);
             }
@@ -82,7 +80,7 @@ const Admin = ({ sheet }) => {
     }
 
     useEffect(() => {
-        if (scannedTicket) timerRef.current = 5;
+        if (scannedTicket) timerRef.current = 2;
     }, [scannedTicket])
 
     const { ref } = useZxing({
@@ -108,6 +106,23 @@ const Admin = ({ sheet }) => {
 
     return (
         <div className="d-flex flex-column align-items-center">
+            <div className="loading" ref={loadingOverlay} style={{
+                display: "none",
+                position: "absolute",
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+                backgroundColor: "rgba(0,0,0,0.5)",
+                zIndex: 100,
+                justifyContent: "center",
+                alignItems: "center",
+            }}>
+                <Spinner animation="grow" variant="success" style={{ height: 50, width: 50 }}>
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+
+            </div>
             <h1>Ticket Verification</h1>
             <video 
                 height={500}
@@ -127,10 +142,9 @@ const Admin = ({ sheet }) => {
                         <div><b>Event: </b>{scannedTicket.event}</div>
                         <div><b>Time: </b>{scannedTicket.time}</div>
                         <div><b>Ticket Ref ID: </b>{scannedTicket.id}</div>
-                        <div><b>Seat: </b>{scannedTicket.seat}</div>
                         <div><b>Name: </b>{scannedTicket.name}</div>
                     </div>
-                    <div style={{ color: "#BBBBBD", textAlign: "center" }}>Scanning next ticket in 5s</div>
+                    <div style={{ color: "#BBBBBD", textAlign: "center" }}>Scanning next ticket in 2s</div>
                 </>
             )}
             
